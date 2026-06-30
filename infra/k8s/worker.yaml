@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wireless-worker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wireless-worker
+  template:
+    metadata:
+      labels:
+        app: wireless-worker
+    spec:
+      containers:
+        - name: worker
+          image: ghcr.io/example/wireless-backend:latest
+          command: ["celery", "-A", "app.workers.celery_app.celery_app", "worker", "--loglevel=INFO"]
+          envFrom:
+            - secretRef:
+                name: wireless-secrets
+            - configMapRef:
+                name: wireless-config

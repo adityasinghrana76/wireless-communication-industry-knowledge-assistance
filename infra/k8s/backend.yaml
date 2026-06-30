@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wireless-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wireless-backend
+  template:
+    metadata:
+      labels:
+        app: wireless-backend
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/example/wireless-backend:latest
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: wireless-secrets
+            - configMapRef:
+                name: wireless-config
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8000
+            initialDelaySeconds: 10
+            periodSeconds: 15
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: wireless-backend
+spec:
+  selector:
+    app: wireless-backend
+  ports:
+    - port: 8000
+      targetPort: 8000
