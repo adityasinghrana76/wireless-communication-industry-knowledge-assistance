@@ -1,6 +1,6 @@
 # Wireless Communication Industry Knowledge Assistance
 
-Production-shaped AI platform scaffold for wireless communication market intelligence. It includes FastAPI, React, PostgreSQL, ChromaDB, Redis, Celery, internet search/crawling hooks, RAG chat, deployment manifests, Helm, and CI.
+Production-shaped AI platform scaffold for wireless communication market intelligence. It includes FastAPI, React, PostgreSQL, ChromaDB, Redis, Celery, internet search/crawling hooks, RAG chat, deployment manifests.
 
 ## Quick Start
 
@@ -65,10 +65,3 @@ This project now includes production-oriented foundations:
 - Backend and worker containers running as a non-root user.
 - Pinned ChromaDB Python client/server versions to avoid API drift.
 
-Remaining production work before public launch:
-
-- Replace the single admin password flow with organization users, roles, audit logs, and password rotation.
-- Move schema management from `schema.sql` bootstrap to Alembic migrations.
-- Add structured logs, metrics, tracing, and alerting.
-- Add source quality scoring, deduplication, ingestion jobs, and retry queues.
-- Add deeper frontend workflows for source review, entity curation, ingestion status, and chat history.
