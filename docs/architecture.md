@@ -75,10 +75,6 @@ erDiagram
 
 Local development runs with Docker Compose: PostgreSQL, Redis, ChromaDB, FastAPI, Celery worker, and Nginx-hosted React. Production deploys the API, worker, and frontend as independently scalable Kubernetes deployments. Secrets should be replaced with a cloud secret manager such as AWS Secrets Manager, GCP Secret Manager, Azure Key Vault, or External Secrets Operator.
 
-## CI/CD Design
-
-GitHub Actions runs backend linting, unit tests, Bandit security scan, frontend build, Docker image builds, and GHCR pushes. A deploy stage can run `helm upgrade --install` against a target cluster once registry, cluster credentials, and release environments are configured.
-
 ## Development Roadmap
 
 1. Add Alembic migrations and seed taxonomies for RF, 4G, 5G, 6G, IoT, satellite, and security.
